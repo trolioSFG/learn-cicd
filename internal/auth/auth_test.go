@@ -1,8 +1,8 @@
 package auth
 
 import (
-	"testing"
 	"net/http"
+	"testing"
 )
 
 func TestGetAPIKey(t *testing.T) {
@@ -16,16 +16,15 @@ func TestGetAPIKey(t *testing.T) {
 	// hdrAuth.Add("Authorization", "AKey token")
 
 	tests := []struct {
-		headers http.Header
+		headers   http.Header
 		wantError bool
-		wanted string
+		wanted    string
 	}{
-		{ headers: http.Header{}, wantError: true, },
-		{ headers: hdrEmptyAuth, wantError: true, },
-		{ headers: hdrMalformed, wantError: true, },
-		{ headers: hdrAuth, wantError: false, wanted: "token"},
+		{headers: http.Header{}, wantError: true},
+		{headers: hdrEmptyAuth, wantError: true},
+		{headers: hdrMalformed, wantError: true},
+		{headers: hdrAuth, wantError: false, wanted: "token"},
 	}
-
 
 	for _, test := range tests {
 		result, error := GetAPIKey(test.headers)
@@ -45,5 +44,3 @@ func TestGetAPIKey(t *testing.T) {
 	}
 
 }
-
-

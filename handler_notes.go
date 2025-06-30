@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/trolioSFG/learn-cicd/internal/database"
 	"github.com/google/uuid"
+	"github.com/trolioSFG/learn-cicd/internal/database"
 )
 
 func (cfg *apiConfig) handlerNotesGet(w http.ResponseWriter, r *http.Request, user database.User) {

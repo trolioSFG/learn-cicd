@@ -96,11 +96,14 @@ func main() {
 	v1Router.Get("/healthz", handlerReadiness)
 
 	router.Mount("/v1", v1Router)
-	duration, _ := time.ParseDuration("5s")
+
+	// duration, _ := time.ParseDuration("5s")
+	// Mas facil asi:
+
 	srv := &http.Server{
 		Addr:              ":" + port,
 		Handler:           router,
-		ReadHeaderTimeout: duration,
+		ReadHeaderTimeout: time.Second * 5,
 	}
 
 	log.Printf("Serving on port: %s\n", port)

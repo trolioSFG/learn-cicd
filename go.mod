@@ -1,4 +1,5 @@
-module github.com/bootdotdev/learn-cicd-starter
+// module github.com/bootdotdev/learn-cicd-starter
+module github.com/trolioSFG/learn-cicd
 
 go 1.22
 

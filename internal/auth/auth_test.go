@@ -11,9 +11,9 @@ func TestGetAPIKey(t *testing.T) {
 	hdrMalformed := http.Header{}
 	hdrMalformed.Add("Authorization", "Bearer_malformed")
 	hdrAuth := http.Header{}
-	// hdrAuth.Add("Authorization", "ApiKey token")
+	hdrAuth.Add("Authorization", "ApiKey token")
 	// Fail test
-	hdrAuth.Add("Authorization", "AKey token")
+	// hdrAuth.Add("Authorization", "AKey token")
 
 	tests := []struct {
 		headers http.Header

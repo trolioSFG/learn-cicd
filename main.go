@@ -15,6 +15,7 @@ import (
 	"github.com/trolioSFG/learn-cicd/internal/database"
 
 	_ "github.com/tursodatabase/libsql-client-go/libsql"
+	"time"
 )
 
 type apiConfig struct {
@@ -95,9 +96,11 @@ func main() {
 	v1Router.Get("/healthz", handlerReadiness)
 
 	router.Mount("/v1", v1Router)
+	duration, _ := time.ParseDuration("5s")
 	srv := &http.Server{
 		Addr:    ":" + port,
 		Handler: router,
+		ReadHeaderTimeout: duration,
 	}
 
 	log.Printf("Serving on port: %s\n", port)
